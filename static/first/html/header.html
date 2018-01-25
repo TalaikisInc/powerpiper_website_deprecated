@@ -1,0 +1,33 @@
+{{ define "header" }}
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Power Piper">
+    <title>{{ .Strings.PageTitle }} | {{ .Strings.SiteTitle }}</title>
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <link rel='dns-prefetch' href='//maxcdn.bootstrapcdn.com'/>
+    <link rel='dns-prefetch' href='//www.google-analytics.com'/>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=IM+Fell+English" rel="stylesheet">
+    <link href="{{ .Strings.BaseURL }}/static/css/style.css" rel="stylesheet" type="text/css">
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Power Piper"/>
+    <meta name="twitter:site" content="@ThePowerPiper" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="website" />
+</head>
+
+<body>
+  <script>
+    document.body.className = document.body.className + " js_enabled";
+  </script>
+  <div class="container">
+{{ end }}

@@ -1,0 +1,55 @@
+{{ define "footer" }}
+<div class="footer">
+    <div id="cookie-message">
+			<p class="text-center secondary">This site uses cookies. If you continue to use this site we will assume that you agreed to it.</p>
+			<hr />
+			<h1>&nbsp;</h1>
+		</div>
+    <h6 class="text-center">
+        <a href="//www.linkedin.com/company/power-piper/"><i class="fa fa-linkedin"></i></a>&nbsp;
+        <a href="//t.me/joinchat/HTo8RBG9CLABNn3hZiIrig"><i class="fa fa-telegram"></i></a>&nbsp;
+        <a href="//github.com/powerpiper"><i class="fa fa-github"></i></a>&nbsp;
+        <a href="//plus.google.com/u/1/109642331145101222195"><i class="fa fa-google-plus"></i></a>&nbsp;
+        <a href="//www.facebook.com/powerpiper/"><i class="fa fa-facebook"></i></a>&nbsp;
+        <a href="//twitter.com/ThePowerPiper"><i class="fa fa-twitter"></i></a>&nbsp;
+        <a href="//www.instagram.com/powerpiper/"><i class="fa fa-instagram"></i></a>&nbsp;
+        <a href="//medium.com/power-piper"><i class="fa fa-medium"></i></a>&nbsp;
+        <a href="//www.reddit.com/user/powerpiper"><i class="fa fa-reddit"></i></a>&nbsp;
+        <a href="#"><i class="fa fa-btc"></i></a>&nbsp;
+        <a href="//www.youtube.com/channel/UCJ1NtquKbzr0Naw31aiIzyg"><i class="fa fa-youtube"></i></a>
+    </h6>
+    <div class="container">
+            &copy; <script>document.write(new Date().getFullYear());</script>, Power Piper | <a href="{{ .Strings.BaseUrl }}/page/privacy_policy/">Privacy Policy</a> | <a href="{{ .Strings.BaseUrl }}/page/cookie_policy/">Cookie Policy</a>
+    </div>
+</div>
+</div>
+{{ if eq .Strings.UA  "" }}
+<!-- <div id="intergramChat"></div>
+<script>
+    window.intergramId = {{ .Strings.IntergramID }};
+    window.intergramServer = "chat.powerpiper.com";
+</script>
+<script id="intergram" type="application/javascript" src="{{ .Strings.BaseURL }}/intergram/dist/js/widget.js"></script>
+<audio id="messageSound" src="{{ .Strings.BaseURL }}/intergram/dist/media/ping.mp3" preload="auto"></audio> -->
+<!-- Start of Async Drift Code -->
+<!--<script>
+!function(){var t;return t=window.driftt=window.drift=window.driftt||[],t.init?void 0:t.invoked?void(window.console&&console.error&&console.error("Drift snippet included twice.")):(t.invoked=!0,t.methods=["identify","config","track","reset","debug","show","ping","page","hide","off","on"],t.factory=function(e){return function(){var n;return n=Array.prototype.slice.call(arguments),n.unshift(e),t.push(n),t}},t.methods.forEach(function(e){t[e]=t.factory(e)}),t.load=function(t){var e,n,o,r;e=3e5,r=Math.ceil(new Date/e)*e,o=document.createElement("script"),o.type="text/javascript",o.async=!0,o.crossorigin="anonymous",o.src="https://js.driftt.com/include/"+r+"/"+t+".js",n=document.getElementsByTagName("script")[0],n.parentNode.insertBefore(o,n)})}(),drift.SNIPPET_VERSION="0.3.1",drift.load("k7xwg7vbtgz2");
+</script> -->
+<!-- <script data-skip-moving="true">
+    (function(w,d,u,b){
+            s=d.createElement('script');r=(Date.now()/1000|0);s.async=1;s.src=u+'?'+r;
+            h=d.getElementsByTagName('script')[0];h.parentNode.insertBefore(s,h);
+    })(window,document,'https://cdn.bitrix24.com/b5667813/crm/site_button/loader_2_bl7lip.js');
+</script> -->
+<a href="https://slack.com/oauth/authorize?scope=bot&client_id=277129588438.284254857233&redirect_uri=https%3a%2f%2fslack.botframework.com%2fHome%2fauth&state=powerpiper"><img height="40" width="139" src="https://platform.slack-edge.com/img/add_to_slack.png" srcset="https://platform.slack-edge.com/img/add_to_slack.png 1x, https://platform.slack-edge.com/img/add_to_slack@2x.png 2x"></a>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js" async></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js" async></script>
+<script src="{{ .Strings.BaseURL }}/static/{{ .Strings.Template }}/js/cookie-policy.js" async></script>
+<script>
+var aID="{{ .Strings.AnalyticsID }}";!function(e,a,t,n,c,s,o){e.GoogleAnalyticsObject=c,e[c]=e[c]||function(){(e[c].q=e[c].q||[]).push(arguments)},e[c].l=1*new Date,s=a.createElement(t),o=a.getElementsByTagName(t)[0],s.async=1,s.src=n,o.parentNode.insertBefore(s,o)}(window,document,"script","//www.google-analytics.com/analytics.js","ga"),ga("create",aID,"auto"),ga("send","pageview");
+</script>
+<script src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js" async></script>
+{{ end }}
+</body>
+</html>
+{{ end }}

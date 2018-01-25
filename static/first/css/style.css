@@ -1,0 +1,54 @@
+.js_enabled #cookie-message {
+    display: none;
+}
+
+body {
+    background-color: #1A1A1B;
+}
+
+.bcg {
+    background-color: #1A1A1B;
+}
+
+.title {
+    color: #94F3E4;
+    font-family: 'IM Fell English', serif;
+    font-size: 9vh;
+    text-transform: uppercase;
+    transform-origin: left top 0px;
+    line-height: 1.4;
+    opacity: 1;
+}
+
+.subtitle {
+    color: #FAFAFA;
+    font-family: 'PT Sans', sans-serif;
+    font-size: 3vh;
+    text-transform: uppercase;
+    transform-origin: left top 0px;
+    line-height: 1.4;
+    opacity: 1;
+}
+
+.secondary {
+    color: #FAFAFA;
+    font-family: 'PT Sans', sans-serif;
+    background-color: #1A1A1B;
+}
+
+.copy {
+    color: #FAFAFA;
+    font-family: 'PT Sans', sans-serif;
+    font-size: 1.5vh;
+}
+
+.social {
+    color: #FAFAFA;
+    font-family: 'PT Sans', sans-serif;
+    font-size: 3vh;
+}
+
+p {
+    color: #FAFAFA;
+    font-family: 'PT Sans', sans-serif;
+}

@@ -1,0 +1,94 @@
+{{ define "header" }}
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <base href="{{ .Strings.BaseURL }}/">
+    <link rel="canonical" href="{{ .Strings.BaseURL }}/" />
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+    <title>{{ .Strings.PageTitle }} | {{ .Strings.SiteTitle }} </title>
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" rel="stylesheet" media="none" onload="if(media!='all')media='all'" />
+	<link href="static/{{ .Strings.Template }}/css/coming-sssoon.css" rel="stylesheet" media="none" onload="if(media!='all')media='all'" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" media="none" onload="if(media!='all')media='all'" />
+    <link href="//fonts.googleapis.com/css?family=Grand+Hotel' rel='stylesheet" media="none" onload="if(media!='all')media='all'">
+    <!--[if lt IE 9]>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <![endif]-->
+    <!-- <link rel="stylesheet" rel="stylesheet" type="text/css" href="{{ .Strings.BaseURL }}/intergram/dist/css/chat.css"> -->
+    <meta property="og:site_name" content="{{ .Strings.SiteTitle }}" />
+    <meta property="og:title" content="{{ .Strings.PageTitle }}" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="{{ .Strings.BaseURL }}" />
+    <meta property="og:image" content="{{ .Strings.BaseURL }}/static/{{ .Strings.Template }}/images/default.jpg" />
+    <meta name="twitter:site" content="@ThePowerPiper" />
+</head>
+
+<body>
+<script>
+    document.body.className = document.body.className + " js_enabled";
+</script>
+<nav class="navbar navbar-transparent navbar-fixed-top" role="navigation">  
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <!-- <ul class="nav navbar-nav">
+         <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"> 
+                <img src="images/flags/US.png"/>
+                English(US) 
+                <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="#"><img src="images/flags/DE.png"/> Deutsch</a></li>
+                <li><a href="#"><img src="images/flags/GB.png"/> English(UK)</a></li>
+                <li><a href="#"><img src="images/flags/FR.png"/> Français</a></li>
+                <li><a href="#"><img src="images/flags/RO.png"/> Română</a></li>
+                <li><a href="#"><img src="images/flags/IT.png"/> Italiano</a></li>
+                
+                <li class="divider"></li>
+                <li><a href="#"><img src="images/flags/ES.png"/> Español <span class="label label-default">soon</span></a></li>
+                <li><a href="#"><img src="images/flags/BR.png"/> Português <span class="label label-default">soon</span></a></li>
+                <li><a href="#"><img src="images/flags/JP.png"/> 日本語 <span class="label label-default">soon</span></a></li>
+                <li><a href="#"><img src="images/flags/TR.png"/> Türkçe <span class="label label-default">soon</span></a></li>
+             
+              </ul>
+        </li>
+
+      </ul> -->
+      <!-- <ul class="nav navbar-nav navbar-right">
+            <li>
+                <a href="#"> 
+                    <i class="fa fa-facebook-square"></i>
+                    Share
+                </a>
+            </li>
+             <li>
+                <a href="#"> 
+                    <i class="fa fa-twitter"></i>
+                    Tweet
+                </a>
+            </li>
+             <li>
+                <a href="#"> 
+                    <i class="fa fa-envelope-o"></i>
+                    Email
+                </a>
+            </li>
+       </ul> -->
+      
+    </div>
+  </div>
+</nav>
+{{ end }}

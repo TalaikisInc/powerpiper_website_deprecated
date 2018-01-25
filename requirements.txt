@@ -1,0 +1,8 @@
+Django>=2.0
+psycopg2
+python-dotenv
+Pillow
+uwsgi
+git+git://github.com/django-ckeditor/django-ckeditor
+pyjwt
+djangorestframework
