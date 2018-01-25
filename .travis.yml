@@ -1,0 +1,81 @@
+language: python
+sudo: required
+python:
+ - 3.6
+
+branches:
+  only:
+  - master
+
+matrix:
+  include:
+    - os: linux
+      dist: xenial
+
+addons:
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+    packages:
+      - gcc
+      - postgresql-client-9.6
+  postgresql: "9.6"
+
+services:
+  - postgresql
+
+env:
+  - DJANGO_VERSION=2.0.1
+
+before_install:
+  - sudo apt-get update -q
+  - sudo apt-get install -y nginx
+  - sudo rm -rf /etc/nginx/sites-enabled/default
+  - sudo apt-get install -y xz-utils
+  - wget https://storage.googleapis.com/golang/go1.8.2.linux-amd64.tar.gz
+  - sudo tar -C /usr/bin -xzf go1.8.2.linux-amd64.tar.gz
+  - export PATH=$PATH:/usr/bin/go/bin
+  - export GOROOT=/usr/bin/go
+  - export GOPATH=$TRAVIS_BUILD_DIR
+  - export FRONTEND_PORT=3010
+  - bash scripts/node.sh
+  - bash scripts/mongo.sh
+  - sudo service postgresql restart
+  - psql -c "CREATE DATABASE test_db ENCODING = 'UTF8';" -U postgres
+
+test:
+  adapter: postgresql
+  database: travis_ci_test
+
+install:
+  - travis_wait 240 pip install -r requirements.txt
+  - pip install -q Django==$DJANGO_VERSION
+
+before_script:
+  - mkdir config
+  - cp scripts/database.yml config/database.yml
+
+script:
+  - python manage.py makemigrations
+  - python manage.py migrate
+  - python scripts/superuser.py --user=testuser --password=testpassword --email=test@email.com
+  - python manage.py collectstatic --noinput
+  - python tests.py
+  - go get github.com/dgrijalva/jwt-go
+  - go get github.com/lib/pq
+  - go get github.com/labstack/echo
+  - go get github.com/labstack/echo/...
+  - go get github.com/joho/godotenv
+  - go get github.com/die-net/lrucache
+  - go build
+  - cd ../frontend
+  - npm i -g pm2
+  - bash ./build.sh 3010 install
+  - cd ../
+  - bash scripts/build.sh 3010 8010
+
+notifications:
+  email:
+    on_success: never
+    on_failure: always
+  slack: powerpiper:fEBF3prSwdbMzHrmXs6Pd4ut
