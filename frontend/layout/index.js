@@ -18,14 +18,17 @@ import Header from 'grommet/components/Header'
 import Columns from 'grommet/components/Columns'
 import Heading from 'grommet/components/Heading'
 import BlogIcon from 'grommet/components/icons/base/Blog'
+import Pulse from 'grommet/components/icons/Pulse'
 import ContactInfoIcon from 'grommet/components/icons/base/ContactInfo'
 import LoginIcon from 'grommet/components/icons/base/Login'
+import PowerIcon from 'grommet/components/icons/base/Power'
 import Button from 'grommet/components/Button'
 import Animate from 'grommet/components/Animate'
 import Section from 'grommet/components/Section'
 import Anchor from 'grommet/components/Anchor'
 import NProgress from 'nprogress'
 import Responsive from 'grommet/utils/Responsive'
+import Image from 'grommet/components/Image'
 
 import ES from '../components/Flags/es'
 import GB from '../components/Flags/gb'
@@ -82,7 +85,7 @@ export default class Layout extends Component {
   componentWillMount() {
     this.setState({
       policy: cookie.load('cookie-policy'),
-      session: cookie.load('sess_id'),
+      //session: cookie.load('sess_id'),
       keep: true,
       currentLang: cookie.load('i18next') || undefined
     })
@@ -137,6 +140,7 @@ export default class Layout extends Component {
   }
 
   render () {
+    const imagesUrl = process.env.IMAGES_URL
     const { masonry, alignC, align, pad, direction } = this.state.small ? {
       masonry: true,
       direction: 'column',
@@ -162,10 +166,10 @@ export default class Layout extends Component {
         <App centered={false}>
           <Article responsive={true} margin='none' flex={false} primary={true}>
             <Animate enter={{ animation: 'slide-up', duration: 1000, delay: 300 }} keep={true}>
-              <Header size='small' fixed={true} direction='row' align='center'>
+              <Header size='small' fixed={true} direction='row' align='center' float={true} colorIndex='neutral-3'>
                 <Box pad={pad} size='auto' responsive={true}>
                   <Link href="/">
-                    <Label>Home</Label>
+                    <Pulse icon={<PowerIcon />} />
                   </Link>
                 </Box>
                 <Box flex={true} direction='row' responsive={true} pad={pad} size='auto'>

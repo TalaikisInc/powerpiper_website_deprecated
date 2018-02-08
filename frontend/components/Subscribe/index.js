@@ -79,7 +79,7 @@ export default class Subscribe extends Component {
     const { status, msg } = this.state
 
     return (
-      <Box align='center' alignContent='center' responsive={true}>
+      <Box align='center' alignContent='center' responsive={true} pad='medium'>
         <form action={action} method="post" noValidate>
           <Box align='center' alignContent='center' responsive={true}>
             <input

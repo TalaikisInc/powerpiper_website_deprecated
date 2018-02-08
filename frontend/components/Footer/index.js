@@ -10,7 +10,7 @@ import Copy from '../Copy'
 const _Footer = (props) => {
   return (
     <Animate enter={{ animation: 'slide-up', duration: 1000, delay: 300 }} keep={true} visible='scroll'>
-      <Footer primary={true} appCentered={true} direction="column" align="center" pad="medium" colorIndex="grey-1">
+      <Footer primary={true} appCentered={true} direction="column" align="center" pad="medium" colorIndex="neutral-3">
         <Wrapper>
           <A href='//www.linkedin.com/company/power-piper/'>{FontAwesome({name: 'linkedin', ariaLabel: 'Linkedin', size: '2x'})}</A>
           <A href='//t.me/joinchat/HTo8RBG9CLABNn3hZiIrig'>{FontAwesome({name: 'telegram', ariaLabel: 'Telegram', size: '2x'})}</A>
