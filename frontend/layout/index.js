@@ -167,7 +167,7 @@ export default class Layout extends Component {
           <Article responsive={true} margin='none' flex={false} primary={true}>
             <Animate enter={{ animation: 'slide-up', duration: 1000, delay: 300 }} keep={true}>
               <Header size='small' fixed={true} direction='row' align='center' float={true} colorIndex='neutral-3'>
-                <Box pad={pad} size='auto' responsive={true}>
+                <Box pad='large' size='auto' responsive={true} align='right'>
                   <Link href="/">
                     <Pulse icon={<PowerIcon />} />
                   </Link>

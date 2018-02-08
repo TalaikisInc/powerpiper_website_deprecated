@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 const A = styled.a`
   color: #fff;
@@ -8,4 +8,4 @@ const A = styled.a`
   }
 `;
 
-export default A;
+export default A

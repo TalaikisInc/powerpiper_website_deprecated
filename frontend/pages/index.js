@@ -17,6 +17,7 @@ import Subscribe from '../components/Subscribe'
 import i18n from '../i18n'
 const t = i18n.t.bind(i18n)
 import FontAwesome from '../components/FontAwesome'
+import H1Wrapper from '../components/TextWrapper/h1'
 
 class Index extends Component {
   constructor(props) {
@@ -39,12 +40,14 @@ class Index extends Component {
 
     return (
       <Layout {...this.props}>
-        <Section full={true} pad='none' align='center' justify='center' texture={`url(${imagesUrl}/bg.png)`}>
+        <Section full={true} pad='none' align='center' justify='center' texture={`url(${imagesUrl}/bcg2.svg)`}>
           <Animate enter={{ animation: 'slide-up', duration: 1000, delay: 1000 }} keep={true}>
             <Box align='center' responsive={true}>
-              <Heading align='center'>
-                {t('common:welcome')}
-              </Heading>
+              <H1Wrapper color='#fff'>
+                <Heading align='center'>
+                  {t('common:welcome')}
+                </Heading>
+              </H1Wrapper>
               <Subscribe />
             </Box>
           </Animate>
@@ -54,7 +57,7 @@ class Index extends Component {
             <Box align='center' responsive={true}>
               {FontAwesome({name: 'plug', size: '4x'})}
               <Heading align='center'>
-                {t('common:intro_title')}
+                  {t('common:intro_title')}
               </Heading>
               <Box align='center' responsive={true} direction='row'>
                 <Box pad='medium' size='large'>
@@ -145,9 +148,13 @@ class Index extends Component {
                 <Paragraph size='large' margin='small' align='center'>
                   {t('common:team_3')}
                 </Paragraph>
-                <Paragraph size='small' margin='small' align='left'>
+                <Paragraph size='small' margin='small'>
                   <a href='https://www.linkedin.com/in/xenu255/'>
                     {FontAwesome({name: 'linkedin', size: '1x'})}
+                  </a>
+                  &nbsp;
+                  <a href='https://talaikis.com'>
+                    {FontAwesome({name: 'external-link-alt', size: '1x'})}
                   </a>
                 </Paragraph>
               </Box>
