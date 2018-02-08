@@ -12,8 +12,6 @@ const Backend = require('i18next-node-fs-backend')
 const i18n = require('./i18n')
 const cookieParser = require('cookie-parser')
 const session = require('express-session')
-const MongoClient = require('mongodb').MongoClient
-const MongoStore = require('connect-mongo')(session)
 const NeDB = require('nedb')
 const routes = require('./routes/index')
 const auth = require('./routes/auth')
@@ -21,8 +19,6 @@ const assert = require('assert')
 const Raven = require('raven')
 
 const port = process.env.FRONTEND_PORT
-const sessConn = process.env.SESSION_DB_CONNECTION_STRING
-const mongoUrl = process.env.MONGO_DB
 const emailHost = process.env.EMAIL_SERVER
 const emailUser = process.env.EMAIL_USERNAME
 const emailPassword = process.env.EMAIL_PASSWORD
@@ -37,8 +33,6 @@ const dsn = process.env.DSN_PUBLIC
 assert.notEqual(null, baseUrl, 'Base URL is required!')
 assert.notEqual(null, sessionSecret, 'Session secret is required!')
 assert.notEqual(null, port, 'Port is required!')
-assert.notEqual(null, sessConn, 'Session connection string is required!')
-assert.notEqual(null, mongoUrl, 'MongoDB URL is required!')
 assert.notEqual(null, emailHost, 'Email server is required!')
 assert.notEqual(null, emailUser, 'Email server username is required!')
 assert.notEqual(null, emailPassword, 'Email password is required!')
@@ -61,21 +55,6 @@ const captureMessage = (req, res) => () => {
   }
 }
 
-let mailserver = directTransport()
-if (emailHost && emailUser && emailPassword) {
-  mailserver = smtpTransport({
-    host: emailHost,
-    port: emailPort || 25,
-    secure: (emailSecure && emailSecure.match(/true/i)) ? true : false,
-    auth: {
-      user: emailUser,
-      pass: emailPassword
-    }
-  })
-}
-
-let sessionStore, userdb
-
 const server = express()
 
 server.use(cookieParser())
@@ -91,57 +70,6 @@ i18n.use(Backend).use(i18nextMiddleware.LanguageDetector).init({
 }, () => {
   app.prepare()
     .then(() => {
-      return new Promise((resolve, reject) => {
-        if (mongoUrl) {
-          MongoClient.connect(mongoUrl, (err, client) => {
-            assert.equal(null, err)
-            userdb = client.db('users').collection('users')
-            resolve(true)
-          })
-        } else {
-          console.warn('Warning: No user database connection string configured (using in-memory database, user data will not be persisted)')
-          userdb = new NeDB({ autoload: true })
-          userdb.loadDatabase((err) => {
-            if (err) {
-              return reject(err)
-            }
-            resolve(true)
-            return null
-          })
-        }
-      })
-    })
-    .then(() => {
-      return new Promise((resolve) => {
-        if (sessConn) {
-          sessionStore = new MongoStore({
-            url: sessConn,
-            autoRemove: 'interval',
-            // in minutes
-            autoRemoveInterval: 100000,
-            collection: 'sessions',
-            stringify: false
-          })
-          resolve(true)
-        } else {
-          console.warn('Warning: No session database connection string configured (using in-memory session store, session data will not be persisted)')
-          sessionStore = new session.MemoryStore()
-          resolve(true)
-        }
-      })
-    })
-    .then(() => {
-      auth.configure({
-        nextApp: app,
-        expressApp: server,
-        userdb: userdb,
-        session: session,
-        store: sessionStore,
-        secret: sessionSecret,
-        mailserver: mailserver,
-        fromEmail: fromEmail,
-        serverUrl: serverUrl
-      })
 
       // Error logger
       if (prod) {
@@ -160,9 +88,7 @@ i18n.use(Backend).use(i18nextMiddleware.LanguageDetector).init({
       // Expose a route to return user profile if logged in with a session
       server.get('/dashboard/user', (req, res) => {
         if (req.user) {
-          console.error('requested user')
-          console.error(req.user)
-          userdb.findOne({ _id: req.user.id }, (err, user) => {
+          /*userdb.findOne({ _id: req.user.id }, (err, user) => {
             if (err || !user) {
               return res.status(500).json({ error: 'Unable to fetch profile' })
             }
@@ -177,7 +103,7 @@ i18n.use(Backend).use(i18nextMiddleware.LanguageDetector).init({
             })
             console.error('Profile not found.')
             return null
-          })
+          })*/
         } else {
           return res.status(403).json({ error: 'Must be signed in to access profile' })
         }
@@ -188,7 +114,7 @@ i18n.use(Backend).use(i18nextMiddleware.LanguageDetector).init({
       // Expose a route to allow users to update their profiles (name, email)
       server.post('/dashboard/user', (req, res) => {
         if (req.user) {
-          userdb.findOne({ _id: req.user.id }, (err, user) => {
+          /*userdb.findOne({ _id: req.user.id }, (err, user) => {
             if (err || !user) {
               return res.status(500).json({ error: 'Unable to fetch profile' })
             }
@@ -212,7 +138,7 @@ i18n.use(Backend).use(i18nextMiddleware.LanguageDetector).init({
             })
             console.error('/dashboard/user failed')
             return null
-          })
+          })*/
         } else {
           return res.status(403).json({ error: 'Must be signed in to update profile' })
         }

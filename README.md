@@ -19,3 +19,15 @@ See [website](https://github.com/powerpiper/website) instead.
 - Server them via Golang API.
 - Has remaining initial version templates to serve as frontend via handlers/.
 - Handlers version had easier change of templates implemented.
+
+## Run
+
+1. Api:
+
+    $ run main.go -isdev (w/o '-isdev' if in proruction)
+
+2. Frontend:
+
+    $ npm run dev
+
+3. Visit http://localhost:8030
