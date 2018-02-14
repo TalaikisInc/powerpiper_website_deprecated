@@ -24,31 +24,34 @@ export default class Block extends Component {
     const authorName = this.props.post.author_id.FirstName ? `${this.props.post.author_id.FirstName} ${this.props.post.author_id.LastName}` : 'Anonymous'
 
     return (
-      <Section full={false} pad='medium' justify='center'>
         <Animate enter={{ animation: 'slide-up', duration: 1000, delay: 0 }} keep={true} visible={visibility}>
           <Box align='center'>
-            <Heading align='center'>
-              <a href={categoryUrl} className='grommetux-anchor' onMouseEnter={() => {Router.prefetch(categoryUrl)}}>
-                {this.props.post.category_id.Title}
-              </a>  <FormNextIcon />
-              <a href={articleUrl} className='grommetux-anchor' onMouseEnter={() => {Router.prefetch(articleUrl)}}>
-                { this.props.post.title }
-              </a>
+            <Heading>
+              { /*<span className="dark">*/ }
+                <a href={categoryUrl} className='grommetux-anchor dark' onMouseEnter={() => {Router.prefetch(categoryUrl)}}>
+                    {this.props.post.category_id.Title}
+                </a>  <FormNextIcon />
+                <a href={articleUrl} className='grommetux-anchor dark' onMouseEnter={() => {Router.prefetch(articleUrl)}}>
+                  { this.props.post.title }
+                </a>
+              { /*</span>*/}
             </Heading>
+          </Box>
+          <Box>
             <Paragraph>
-              By <a href={authorUrl}
-                className='grommetux-anchor'
-                onMouseEnter={() => {Router.prefetch(authorUrl)}}>
-                { authorName }
-              </a>
-              &nbsp;|&nbsp;
-              {Date(this.props.post.date)}
+              <span className="light">
+                By <a className="grommetux-anchor--dark" href={authorUrl}
+                  onMouseEnter={() => {Router.prefetch(authorUrl)}}>
+                  { authorName }
+                </a>
+                &nbsp;|&nbsp;
+                {Date(this.props.post.date)}
+              </span>
             </Paragraph>
             <Image alt={this.props.post.title} src={image} size='large' />
             <div dangerouslySetInnerHTML={{ __html: excerpt }} />
           </Box>
         </Animate>
-      </Section>
     )
   }
 }

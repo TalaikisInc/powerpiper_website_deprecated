@@ -3,8 +3,10 @@ import SVGIcon from 'grommet/components/SVGIcon'
 import Wrapper from './wrapper'
 
 const ES = (props) => {
+  const theme = props.theme
+
   return (
-    <Wrapper>
+    <Wrapper theme={props.theme}>
       <SVGIcon viewBox="0 0 640 480" width="100" height="60" version='1.1' type='logo' a11yTitle={props.label}>
         <rect fill="#c60b1e" height="500" width="750"/>
         <rect fill="#ffc400" height="250" width="750" y="125"/>
@@ -635,7 +637,9 @@ const ES = (props) => {
         <path d="M319.32 225.597L319.32 225.468" fill="none" stroke="#000" strokeWidth="0.18"/>
         <path d="M326.138 226.103L326.138 224.942M325.555 226.141L325.562 224.912M325.13 226.156L325.13 224.904" fill="none" stroke="#000" strokeWidth="0.01"/>
       </SVGIcon>
+      <span className={theme}>
         &nbsp;{ props.label }
+      </span>
     </Wrapper>
   )
 }

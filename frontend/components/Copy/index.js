@@ -1,11 +1,9 @@
-import A from '../A'
-
-const siteTitle = process.env.SITE_TITLE
+import ENV from '../../conf'
 
 const Copy = () => {
   return (
-    <div>&copy; {(new Date().getFullYear())}
-      <span dangerouslySetInnerHTML={{ __html: ` ${siteTitle} | <A href='/privacy_policy/'>Privacy Policy</A> | <A href='/cookie_policy/'>Cookie Policy</A>`}} />
+    <div className="light">&copy; {(new Date().getFullYear())}
+      <span dangerouslySetInnerHTML={{ __html: ` ${ENV.SITE_TITLE} | <a href='/privacy_policy/'>Privacy Policy</a> | <a href='/cookie_policy/'>Cookie Policy</a>`}} />
     </div>
   )
 }

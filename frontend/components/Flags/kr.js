@@ -2,10 +2,11 @@ import SVGIcon from 'grommet/components/SVGIcon'
 
 import Wrapper from './wrapper'
 
-// TODO, dimensions and JSX errors
 const KR = (props) => {
+  const theme = props.theme
+
   return (
-    <Wrapper>
+    <Wrapper theme={props.theme}>
       <SVGIcon viewBox='-36 -24 72 48' width="100" height="60" version='1.1' type='logo' a11yTitle={props.label}>
         <rect fill="#fff" x="-36" y="-24" width="72" height="48"/>
         <g transform="rotate(-56.3099325)">
@@ -21,7 +22,9 @@ const KR = (props) => {
           <path stroke="#fff" strokeWidth="1" d="M0-23.5v3M0,17v3.5M0,23.5v3"/>
         </g>
       </SVGIcon>
+      <span className={theme}>
         &nbsp;{ props.label }
+      </span>
     </Wrapper>
   )
 }

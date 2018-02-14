@@ -12,25 +12,23 @@ import SocialShare from 'grommet/components/SocialShare'
 
 import Layout from '../layout'
 import Date from '../utils/helpers'
+import hoc from '../utils/hoc'
+import ENV from '../conf'
 
-const apiUrl = process.env.API_URL
-const imagesUrl = process.env.IMAGES_URL
-const serverUrl = process.env.SERVER_URL
-
-export default class Post extends Component {
+class Post extends Component {
   static async getInitialProps ({ req }) {
     // eslint-disable-next-line no-undef
-    const res = await fetch(`${apiUrl}/api/v1.0${req.url}`)
+    const res = await fetch(`${ENV.API_URL}/api/v1.0${req.url}`)
     const json = await res.json()
 
     return {
       post: json,
       title: json.Title,
       description: json.Title,
-      image: `${imagesUrl}/${json.Image}`,
+      image: `${ENV.IMAGES_URL}/${json.Image}`,
       authorUrl: `/author/${json.AuthorID.Username}/0/`,
       categoryUrl: `/category/${json.CategoryID.Slug}/0/`,
-      postUrl: `${serverUrl}/post/${json.Slug}/`,
+      postUrl: `${ENV.BASE_URL}/post/${json.Slug}/`,
       menu: true,
       langSelector: false
     }
@@ -41,19 +39,26 @@ export default class Post extends Component {
 
     return (
       <Layout {...this.props}>
-        <Section full={false} pad='medium' align='center' justify='center'>
+        <Section pad='large' align='center' justify='center' colorIndex='neutral-4'>
+          {/* this one is added to allow for second section to become visible */}
+        </Section>
+        <Section full={false} pad='medium' align='center' justify='center' colorIndex='neutral-5'>
           <Animate enter={{ animation: 'slide-up', duration: 1000, delay: 0 }} keep={true}>
             <Heading align='center'>
-              <a href={this.props.categoryUrl} className='grommetux-anchor' onMouseEnter={() => { Router.prefetch(this.props.categoryUrl) }}>
-                {this.props.post.CategoryID.Title}
-              </a>  <FormNextIcon /> { this.props.post.Title }
+              { /*<span class="dark"> */ }
+                <a href={this.props.categoryUrl} className='grommetux-anchor' onMouseEnter={() => { Router.prefetch(this.props.categoryUrl) }}>
+                  {this.props.post.CategoryID.Title}
+                </a>  <FormNextIcon /> { this.props.post.Title }
+              { /*</span>*/ }
             </Heading>
             <Paragraph>
-              By <a href={this.props.authorUrl} className='grommetux-anchor' onMouseEnter={() => {Router.prefetch(this.props.authorUrl)}}>
-                { authorName }
-              </a>
-              &nbsp;|&nbsp;
-              {Date(this.props.post.Date)}
+              <span class="light">
+                By <a href={this.props.authorUrl} className='grommetux-anchor' onMouseEnter={() => {Router.prefetch(this.props.authorUrl)}}>
+                  { authorName }
+                </a>
+                &nbsp;|&nbsp;
+                {Date(this.props.post.Date)}
+              </span>
             </Paragraph>
             <Image alt={this.props.post.Title} src={this.props.image} size='large' />
             {/* this should be aplied to text: className='grommetux-paragraph grommetux-paragraph--xlarge' */}
@@ -71,3 +76,5 @@ export default class Post extends Component {
     )
   }
 }
+
+export default hoc({}, state => state)(Post)

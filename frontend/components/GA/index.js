@@ -1,7 +1,9 @@
 import ReactGA from 'react-ga'
 
+import ENV from '../../conf'
+
 export const initGA = () => {
-  ReactGA.initialize(process.env.GA)
+  ReactGA.initialize(ENV.GA)
 }
 
 export const logPageView = (documentPath) => {

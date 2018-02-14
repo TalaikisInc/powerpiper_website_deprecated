@@ -17,7 +17,9 @@ import LoginIcon from 'grommet/components/icons/base/Login'
 import SaveIcon from 'grommet/components/icons/base/Save'
 
 import Layout from '../layout'
-import Session from '../components/Session'
+// import Session from '../components/Session'
+import hoc from '../utils/hoc'
+import Actions from '../utils/actions'
 
 class DashBoard extends Component {
   static async getInitialProps({ req }) {
@@ -50,14 +52,16 @@ class DashBoard extends Component {
     this.handleSignoutSubmit = this.handleSignoutSubmit.bind(this)
   }
 
+  _handleDelete = () => {
+    this.props.dispatch(Actions.viewerDelete());
+  }
+
   async componentDidMount() {
     const session = await Session.getSession({ force: true })
     this.setState({
       session: session,
       isSignedIn: (session.user) ? true : false
     })
-
-    cookie.save('redirect_url', '/dashboard/', { path: '/' })
 
     this.getProfile()
   }
@@ -286,4 +290,4 @@ DashBoard.defaultProps = {
   menu: true
 }
 
-export default DashBoard
+export default hoc({}, state => state)(DashBoard)

@@ -1,24 +1,150 @@
+$grommet-namespace: 'c-';
 $brand-font-family: 'Metric', Arial, sans-serif;
 $brand-large-number-font-family: 'Metric', Arial, sans-serif;
-$brand-color: #01a982;
-$dark: #000;
-$brand-color-lighter: desaturate(lighten($brand-color, 55%), 40%);
-$brand-neutral-colors: (#425563, #B39DDB, transparentize($dark, 1.0), #7b6b3d) !default;
-$brand-accent-colors: (#fff, #614767, #ff8d6d) !default;
+$light: #f5f5f5;
+$dark: #006F79;
+$dark-text: #003358;
+$brand-color: #00A79D !default; // button borders
+// transparent header: transparentize($dark, 0.8)
+$brand-neutral-colors: (#5d0cfb, $light, $dark, darken($dark, 5%), #005777) !default;
+$brand-accent-colors: ($light, #a577ff) !default; // 1 - pulse background
 $brand-status-colors: (
-  critical: #F04953,
-  error: #F04953,
-  warning: #FFD144,
-  ok: $brand-color,
-  unknown: #CCCCCC,
-  disabled: #CCCCCC
-);
-$brand-link-color: inherit;
-$link-hover-color: #000;
-$brand-link-text-decoration: underline;
-$brand-grey-colors: (#000001, #333333, #3B3B3B, #434343, #666666);
-$brand-graph-colors: $brand-neutral-colors;
- 
+  critical: #FF856B,
+  error: #FF856B,
+  warning: #FFB86B,
+  ok: #4EB976,
+  unknown: #a8a8a8,
+  disabled: #a8a8a8
+) !default;
+
+$brand-grey-colors: (#001740, #333333, $dark, #555555, #666666) !default; //1 - pulse icon
+$border-color: $light !default; // non-active inputs
+
+/*
+$brand-error-colored-color: #F59F9F !default;
+$brand-graph-colors: $brand-neutral-colors !default;
+$brand-light-colors: ($light, #f5f5f5) !default;
+
+$brand-color-darker: darken($brand-color, 9%) !default;
+
+// ---------------------------- 
+// LINKS
+// ---------------------------- 
+
+*/
+$brand-link-color: $light !default; // link color
+$hover-text-color: lighten($light, 20%) !default;
+$link-hover-color: $hover-text-color !default; // blog link hover
+/*
+$link-color: $brand-link-color !default;
+*/
+.light {
+  color: $light;
+}
+
+.dark {
+  color: $dark-text;
+
+  a:link {
+    color: $dark-text;
+  }
+
+  a:visited {
+    color: lighten($dark-text, 20%);
+  }
+
+  a:link {
+    color: lighten($dark-text, 10%);
+  }
+
+}
+/*
+// ---------------------------- 
+// TEXT
+// ---------------------------- 
+*/
+$text-color: $light !default; // 'blog link'
+$secondary-text-color: darken($dark-text, 20%) !default; // tabs titles, text
+
+/*
+$brand-color-lighter: lighten($brand-color, 23%) !default;
+$selected-text-color: $light !default;
+$placeholder-text-color: darken($light, 5%) !default;
+$active-colored-text-color: #fff !default;
+$inactive-colored-text-color: rgba(255, 255, 255, 0.7) !default;
+$colored-text-color: rgba(255, 255, 255, 0.85) !default; //#dbdbdb;
+// 63 was empirically determined based on HPE critical and warning colors
+$colored-text-color-lightness-threshold: 63 !default;
+$selected-primary-background-color: $brand-color !default;
+$selected-primary-text-color: $colored-text-color !default;
+//$heading-text-color: $light !default;
+//$paragraph-text-color: $dark-text !default;
+$icon-badge-text-color: $light !default;
+*/
+// ---------------------------- 
+// BACKGROUNDS
+// ---------------------------- 
+/*
+$background-color: darken($dark, 5%) !default;
+$secondary-background-color: #f5f5f5 !default;
+$hover-background-color: rgba(#ddd, 0.5) !default;
+$colored-active-background-color: rgba(0, 0, 0, 0.15) !default;
+$colored-hover-background-color: $light !default;
+$selected-background-color: $brand-color-lighter !default;
+$strong-border-color: #000 !default;
+$colored-border-color: rgba(255, 255, 255, 0.5) !default;
+$colored-strong-border-color: #fff !default;
+
+// ---------------------------- 
+// ICONS
+// ---------------------------- 
+*/
+$icon-color: $light !default;
+$active-icon-color: lighten($light, 20%) !default; //hover on button icon color
+
+/*
+$disabled-icon-color: #ccc !default;
+$colored-icon-color: rgba(255, 255, 255, 0.7) !default; //#dbdbdb;
+$colored-status-color: rgba(255, 255, 255, 0.9) !default; //#dbdbdb;
+$active-colored-icon-color: #fff !default;
+$icon-badge-background-color: nth($brand-accent-colors, 1) !default;
+
+// Controls
+
+$focus-border-color: nth($brand-accent-colors, 1) !default;
+$control-brand-color: $brand-color !default;
+*/
+
+$button-border-color: $brand-color !default;
+$button-text-color: $light !default; // text color inside button
+/*
+$button-secondary-color: rgba(#333, 0.6) !default;
+$button-accent-color: nth($brand-accent-colors, 1) !default;
+$button-critical-color: map-get($brand-status-colors, critical) !default;
+$button-drop-shadow-color: rgba(170, 170, 170, 0.5) !default;
+$button-colored-border-color: rgba(255, 255, 255, 0.7) !default; ///rgba(255, 255, 255, 0.7) !default;
+
+$layer-overlay-background-color: rgba(0, 0, 0, 0.5) !default;
+$layer-background-color: #fff !default; // rgba($background-color, 0.95); ///inherit; //rgba(255, 255, 255, 0.95);
+$layer-border: none !default; // 1px solid $brand-color;
+$layer-box-shadow: none !default; // 0px 2px 4px rgba(0, 0, 0, 0.3) !default;
+$drop-background: rgba(#f8f8f8, 0.95) !default;
+$drop-border: none !default; // 1px solid $border-color !default;
+$drop-box-shadow: none !default; // 0px 2px 4px rgba(0, 0, 0, 0.3) !default;
+$form-field-background-color: #fff !default;
+$drop-background-color: rgba(255, 255, 255, 0.9) !default;
+$header-background-color: rgba(255, 255, 255, 0.9) !default;
+$footer-background-color: rgba(255, 255, 255, 0.9) !default;
+$active-background-color: rgba(255, 255, 255, 0.8) !default;
+$sort-placeholder-background-color: rgba(0, 0, 255, 0.1) !default;
+
+$inverse-background-color: nth($brand-neutral-colors, 1) !default;
+$inverse-color: #000 !default;
+
+// ---------------------------- 
+// FONTS
+// ---------------------------- 
+*/
 $hpe-fonts-path: "https://hpefonts.s3.amazonaws.com/web" !default;
 
 @font-face {
@@ -47,6 +173,38 @@ $hpe-fonts-path: "https://hpefonts.s3.amazonaws.com/web" !default;
 $text-font-weight: 100;
 $text-strong-font-weight: 600;
 
-$button-accent-color: #ff8d6d;
-$control-brand-color: #049371;
-$border-radius: 0px;
+// ---------------------------- 
+// ETC
+// ---------------------------- 
+
+$unset-color: #ddd !default;
+$control-background-color: rgba($dark, 0.2) !default;
+
+$meter-color: $brand-color !default;
+$meter-background-color: rgba(0, 0, 0, 0.1) !default;
+$colored-meter-background-color: rgba(#fff, 0.2) !default;
+$threshold-color: rgba($dark, 0.2) !default;
+$cursor-color: $dark !default;
+$toast-background-color: rgba(#eee, 0.9) !default;
+
+$pending-background:
+  '.#{$grommet-namespace}background-color-index--pending' !default;
+//$dark-background:
+//  '.#{$grommet-namespace}background-color-index--dark, .#{$grommet-namespace}background-color-index--light .#{$grommet-namespace}background-color-index--dark' !default;
+$light-background:
+  '.#{$grommet-namespace}background-color-index--light, .#{$grommet-namespace}background-color-index--dark .#{$grommet-namespace}background-color-index--light',  !default;
+
+$pending-background-context:
+  '.#{$grommet-namespace}background-color-index--pending &' !default;
+$dark-background-context:
+  '.#{$grommet-namespace}background-color-index--dark &, .#{$grommet-namespace}background-color-index--light .#{$grommet-namespace}background-color-index--dark &' !default;
+$light-background-context:
+  '.#{$grommet-namespace}background-color-index--light &, .#{$grommet-namespace}background-color-index--dark .#{$grommet-namespace}background-color-index--light &',  !default;
+
+$pending-background-and:
+  '&.#{$grommet-namespace}background-color-index--pending' !default;
+$dark-background-and:
+  '&.#{$grommet-namespace}background-color-index--dark, .#{$grommet-namespace}background-color-index--light &.#{$grommet-namespace}background-color-index--dark' !default;
+$light-background-and:
+  '&.#{$grommet-namespace}background-color-index--light, .#{$grommet-namespace}background-color-index--dark &.#{$grommet-namespace}background-color-index--light',  !default;
+

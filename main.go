@@ -72,10 +72,10 @@ func main() {
 	app.Use(api.ServerHeader)
 
 	/* Auth */
-	app.GET("/", api.Accessible)
-	r := app.Group("/members")
-	r.Use(middleware.JWT([]byte("secret")))
-	r.GET("", api.Restricted)
+	//app.GET("/", api.Accessible)
+	//r := app.Group("/members")
+	//r.Use(middleware.JWT([]byte("secret")))
+	//r.GET("", api.Restricted)
 
 	/* Handles */
 	app.GET("/api/v1.0/post/:post/", api.PostHandler)

@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types'
 
 const FontAwesome = (props) => {
-  return <i className={`fa fa-${props.name} ${props.className} fa-${props.size}`} alt={props.ariaLabel} style={{ padding: '0.5em'}} />
+  const theme = props.theme ? props.theme : ''
+  return <i className={`fa fa-${props.name} ${props.className} fa-${props.size} ${theme}`} alt={props.ariaLabel} style={{ padding: '0.5em'}} />
 }
 
 FontAwesome.propTypes = {

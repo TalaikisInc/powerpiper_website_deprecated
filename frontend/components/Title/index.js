@@ -1,8 +1,8 @@
-const siteTitle = process.env.SITE_TITLE || 'PowerPiper'
+import ENV from '../../conf'
 
 const Title = (props) => {
   return (
-    <title>{ props.title } | { siteTitle }</title>
+    <title>{ props.title } | { ENV.SITE_TITLE }</title>
   )
 }
 

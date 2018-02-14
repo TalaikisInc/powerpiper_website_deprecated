@@ -2,41 +2,42 @@ const prod = process.env.NODE_ENV === 'production'
 const envLoc = prod ? '../.env' : '../.env.development'
 require('dotenv').config({ path: envLoc })
 const express = require('express')
-const smtpTransport = require('nodemailer-smtp-transport')
-const directTransport = require('nodemailer-direct-transport')
+// const smtpTransport = require('nodemailer-smtp-transport')
+// const directTransport = require('nodemailer-direct-transport')
 const path = require('path')
 const nextjs = require('next')
+const compression = require('compression')
 const app = nextjs({ dir: '.', dev: process.env.NODE_ENV !== 'production', quiet: false })
 const i18nextMiddleware = require('i18next-express-middleware')
 const Backend = require('i18next-node-fs-backend')
 const i18n = require('./i18n')
 const cookieParser = require('cookie-parser')
-const session = require('express-session')
-const NeDB = require('nedb')
+// const session = require('express-session')
+// const NeDB = require('nedb')
 const routes = require('./routes/index')
-const auth = require('./routes/auth')
+// const auth = require('./routes/auth')
 const assert = require('assert')
 const Raven = require('raven')
 
 const port = process.env.FRONTEND_PORT
-const emailHost = process.env.EMAIL_SERVER
-const emailUser = process.env.EMAIL_USERNAME
-const emailPassword = process.env.EMAIL_PASSWORD
-const emailSecure = process.env.EMAIL_SECURE
-const emailPort = process.env.EMAIL_PORT
-const fromEmail = process.env.FROM_EMAIL_ADDRESS
-const serverUrl = process.env.SERVER_URL
-const sessionSecret = process.env.SESSION_SECRET
-const baseUrl = process.env.BASE_URL
+//const emailHost = process.env.EMAIL_SERVER
+//const emailUser = process.env.EMAIL_USERNAME
+//const emailPassword = process.env.EMAIL_PASSWORD
+//const emailSecure = process.env.EMAIL_SECURE
+// const emailPort = process.env.EMAIL_PORT
+// const fromEmail = process.env.FROM_EMAIL_ADDRESS
+// const serverUrl = process.env.SERVER_URL
+//const sessionSecret = process.env.SESSION_SECRET
+//const baseUrl = process.env.BASE_URL
 const dsn = process.env.DSN_PUBLIC
 
-assert.notEqual(null, baseUrl, 'Base URL is required!')
-assert.notEqual(null, sessionSecret, 'Session secret is required!')
+//assert.notEqual(null, baseUrl, 'Base URL is required!')
+//assert.notEqual(null, sessionSecret, 'Session secret is required!')
 assert.notEqual(null, port, 'Port is required!')
-assert.notEqual(null, emailHost, 'Email server is required!')
-assert.notEqual(null, emailUser, 'Email server username is required!')
-assert.notEqual(null, emailPassword, 'Email password is required!')
-assert.notEqual(null, emailSecure, 'Email security string is required!')
+//assert.notEqual(null, emailHost, 'Email server is required!')
+//assert.notEqual(null, emailUser, 'Email server username is required!')
+//assert.notEqual(null, emailPassword, 'Email password is required!')
+//assert.notEqual(null, emailSecure, 'Email security string is required!')
 
 if (prod) {
   assert.notEqual(null, dsn, 'Sentry DSN is required!')
@@ -78,6 +79,8 @@ i18n.use(Backend).use(i18nextMiddleware.LanguageDetector).init({
           res.on('finish', captureMessage(req, res))
           next()
         })
+
+        server.use(compression())
       }
 
       // i18n
@@ -157,9 +160,8 @@ i18n.use(Backend).use(i18nextMiddleware.LanguageDetector).init({
         console.log(`> Ready on http://localhost:${port} [${process.env.NODE_ENV}]`)
       })
     })
-    .catch(err => {
-      console.error('Errro occurred at server')
-      console.error(err.stack)
+    .catch((err) => {
+      console.error('Errro occurred at server', err)
       process.exit(1)
     })
 })

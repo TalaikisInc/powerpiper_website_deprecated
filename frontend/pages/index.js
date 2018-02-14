@@ -17,7 +17,7 @@ import Subscribe from '../components/Subscribe'
 import i18n from '../i18n'
 const t = i18n.t.bind(i18n)
 import FontAwesome from '../components/FontAwesome'
-import H1Wrapper from '../components/TextWrapper/h1'
+import hoc from '../utils/hoc'
 
 class Index extends Component {
   constructor(props) {
@@ -28,85 +28,112 @@ class Index extends Component {
     this._onSelect = this._onSelect.bind(this)
   }
 
-  _onSelect(selected) {
-    this.setState({
-      ...this.state,
-      selected
-    })
-  }
-
   render () {
     const imagesUrl = process.env.IMAGES_URL
 
     return (
       <Layout {...this.props}>
-        <Section full={true} pad='none' align='center' justify='center' texture={`url(${imagesUrl}/bcg2.svg)`}>
+        <Section full={true} pad='none' align='center' justify='center' texture={`url(${imagesUrl}/bcg4.svg)`} colorIndex='neutral-4'>
           <Animate enter={{ animation: 'slide-up', duration: 1000, delay: 1000 }} keep={true}>
-            <Box align='center' responsive={true}>
-              <H1Wrapper color='#fff'>
-                <Heading align='center'>
+            <Box align='center' responsive={true} pad='large'>
+              <Heading align='center'>
+                <span className='light'>
                   {t('common:welcome')}
-                </Heading>
-              </H1Wrapper>
+                </span>
+              </Heading>
               <Subscribe />
             </Box>
           </Animate>
         </Section>
-        <Section full={true} pad='medium' align='center' justify='center'>
-          <Animate enter={{ animation: 'slide-up', duration: 400, delay: 300 }} keep={true} visible='scroll'>
-            <Box align='center' responsive={true}>
-              {FontAwesome({name: 'plug', size: '4x'})}
+        <Section full={true} pad='none' align='center' justify='center' colorIndex='neutral-2'>
+          <Box align='center' responsive={true} pad='large'>
+            <Animate enter={{ animation: 'slide-up', duration: 1000, delay: 1000 }} keep={true} visible='scroll'>
+              {FontAwesome({name: 'plug', theme: 'dark', size: '4x'})}
               <Heading align='center'>
+                <span className='dark'>
                   {t('common:intro_title')}
+                </span>
               </Heading>
+            </Animate>
+            <Animate enter={{ animation: 'slide-down', duration: 1000, delay: 1000 }} keep={true} visible='scroll'>
               <Box align='center' responsive={true} direction='row'>
                 <Box pad='medium' size='large'>
                   <TxCosts />
                 </Box>
-                <Box pad='medium' size='large'>
+                <Box pad='medium' size='large' responsive={true}>
                   <Label>
-                    {t('common:intro_1')}
+                    <span className='dark'>
+                      {t('common:intro_1')}
+                    </span>
+                  </Label>
+                  <Label>
+                    <span className='dark'>
+                      {t('common:intro_2')}
+                    </span>
                   </Label>
                 </Box>
               </Box>
+            </Animate>
+            <Animate enter={{ animation: 'slide-up', duration: 1000, delay: 1000 }} keep={true} visible='scroll'>
               <Box align='center' responsive={true} direction='row'>
-                <Box pad='medium' size='large'>
-                <Label>
-                    {t('common:intro_2')}
+                <Box pad='medium' size='large' responsive={true}>
+                  <Label>
+                    <span className='dark'>
+                      {t('common:intro_3')}
+                    </span>
                   </Label>
                 </Box>
-                <Box pad='medium' size='large'>
+                <Box pad='medium' size='large' responsive={true}>
                 <PowerUsage />
                 </Box>
               </Box>
-            </Box>
-          </Animate>
+            </Animate>
+          </Box>
         </Section>
-        <Section full={true} pad='medium' align='center' justify='center'>
-          <Animate enter={{ animation: 'slide-up', duration: 400, delay: 300 }} keep={true} visible='scroll'>
-            <Box align='center' responsive={true}>
-            {FontAwesome({name: 'battery-full', size: '4x'})}
-            <Heading align='center'>
-              {t('common:about_title')}
-            </Heading>
-            <Label>
-              {t('common:about_1')}
-            </Label>
-            <Label>
-              {t('common:about_2')}
-            </Label>
-            <Label>
-              {t('common:about_3')}
-            </Label>
-            </Box>
-          </Animate>
-        </Section>
-        <Section full={true} pad='medium' align='center' justify='center'>
+        <Section full={true} pad='medium' align='center' justify='center' texture={`url(${imagesUrl}/bcg4.svg)`} colorIndex='neutral-4'>
           <Animate enter={{ animation: 'slide-up', duration: 1000, delay: 1000 }} keep={true} visible='scroll'>
-            <Box align='center' responsive={true}>
-              {FontAwesome({name: 'users', size: '4x'})}
+            <Box align='center' responsive={true} pad='medium'>
+              {FontAwesome({name: 'battery-full', theme: 'light', size: '4x'})}
               <Heading align='center'>
-                {t('common:team_title')}
+                <span className='light'>
+                  {t('common:about_title')}
+                </span>
+              </Heading>
+              <Box align='center' responsive={true} direction='row'>
+                <Box align='center' pad='medium' size='large'>
+                  <Image size='large' src={`${imagesUrl}/about.png`} />
+                </Box>
+                <Box align='center' pad='medium' size='large'>
+                  <Label>
+                    <span className='light'>
+                      {t('common:about_1')}
+                    </span>
+                  </Label>
+                  <Label>
+                    <span className='light'>
+                      {t('common:about_2')}
+                    </span>
+                  </Label>
+                </Box>
+              </Box>
+              <Box align='center' responsive={true}>
+                <Label>
+                  <span className='light'>
+                    {t('common:about_3')}
+                  </span>
+                </Label>
+              </Box>
+            </Box>
+          </Animate>
+        </Section>
+        <Section full={true} pad='none' align='center' justify='center' colorIndex='neutral-2'>
+          <Animate enter={{ animation: 'slide-up', duration: 1000, delay: 1000 }} keep={true} visible='scroll'>
+            <Box align='center' responsive={true} pad='medium'>
+              {FontAwesome({name: 'users', theme: 'dark', size: '4x'})}
+              <Heading align='center'>
+                <span className='dark'>
+                  {t('common:team_title')}
+                </span>
               </Heading>
             </Box>
           </Animate>
@@ -114,47 +141,59 @@ class Index extends Component {
             <Box align='center' responsive={true} direction='row'>
               <Box pad='medium' align='center' justify='start'>
                 <Label uppercase={true} align='center'>
-                  {t('common:team_title_1')}
+                  <span className='dark'>
+                    {t('common:team_title_1')}
+                  </span>
                 </Label>
                 <Image size='small' src={`${imagesUrl}/Giedrecircle.png`} />
                 <Paragraph size='large' margin='small' align='center'>
-                  {t('common:team_1')}
+                  <span className='dark'>
+                    {t('common:team_1')}
+                  </span>
                 </Paragraph>
-                <Paragraph size='small' margin='small' align='left'>
+                <Paragraph size='small' margin='small' align='end'>
                   <a href='https://www.linkedin.com/in/giedre-garbinciute-b008213a/'>
-                    {FontAwesome({name: 'linkedin', size: '1x'})}
+                    {FontAwesome({name: 'linkedin', theme:'dark', size: '1x'})}
                   </a>
                 </Paragraph>
               </Box>
               <Box pad='medium' align='center' justify='start'>
                 <Label uppercase={true} align='center'>
-                  {t('common:team_title_2')}
+                  <span className='dark'>
+                    {t('common:team_title_2')}
+                  </span>
                 </Label>
                 <Image size='small' src={`${imagesUrl}/Mantascircle.png`} />
                 <Paragraph size='large' margin='small' align='center'>
-                  {t('common:team_2')}
+                  <span className='dark'>
+                    {t('common:team_2')}
+                  </span>
                 </Paragraph>
-                <Paragraph size='small' margin='small' align='left'>
+                <Paragraph size='small' margin='small' align='end'>
                   <a href='https://www.linkedin.com/in/mantas-rukui%C5%BEa-136a84139/'>
-                    {FontAwesome({name: 'linkedin', size: '1x'})}
+                    {FontAwesome({name: 'linkedin', theme:'dark', size: '1x'})}
                   </a>
                 </Paragraph>
               </Box>
               <Box pad='medium' align='center' justify='start'>
                 <Label uppercase={true} align='center'>
-                  {t('common:team_title_3')}
+                  <span className='dark'>
+                    {t('common:team_title_3')}
+                  </span>
                 </Label>
                 <Image size='small' src={`${imagesUrl}/Tadascircle.png`} />
                 <Paragraph size='large' margin='small' align='center'>
-                  {t('common:team_3')}
+                  <span className='dark'>
+                    {t('common:team_3')}
+                  </span>
                 </Paragraph>
-                <Paragraph size='small' margin='small'>
+                <Paragraph size='small' margin='small' align='end'>
                   <a href='https://www.linkedin.com/in/xenu255/'>
-                    {FontAwesome({name: 'linkedin', size: '1x'})}
+                    {FontAwesome({name: 'linkedin', theme:'dark', size: '1x'})}
                   </a>
                   &nbsp;
                   <a href='https://talaikis.com'>
-                    {FontAwesome({name: 'external-link-alt', size: '1x'})}
+                    {FontAwesome({name: 'external-link', theme:'dark', size: '1x'})}
                   </a>
                 </Paragraph>
               </Box>
@@ -163,6 +202,13 @@ class Index extends Component {
         </Section>
       </Layout>
     )
+  }
+
+  _onSelect(selected) {
+    this.setState({
+      ...this.state,
+      selected
+    })
   }
 }
 
@@ -182,4 +228,4 @@ Extended.getInitialProps = async ({ req }) => {
   return {}
 }
 
-export default Extended
+export default hoc({}, state => state)(Extended)

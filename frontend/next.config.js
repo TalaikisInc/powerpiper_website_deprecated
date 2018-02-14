@@ -2,6 +2,14 @@ const path = require('path')
 const glob = require('glob')
 const webpack = require('webpack')
 
+const withTypescript = require('@zeit/next-typescript')
+const withSass = require('@zeit/next-sass')
+const withCSS = require('@zeit/next-css')
+
+module.exports = withTypescript()
+module.exports = withSass()
+module.exports = withCSS()
+
 module.exports = {
   poweredByHeader: false,
   webpack: (config) => {
@@ -10,13 +18,6 @@ module.exports = {
     )
 
     config.module.rules.push(
-      {
-        test: /\.(css|scss)/,
-        loader: 'emit-file-loader',
-        options: {
-          name: 'dist/[path][name].[ext]'
-        }
-      },
       {
         test: /\.css$/,
         use: ['babel-loader', 'raw-loader', 'postcss-loader']
