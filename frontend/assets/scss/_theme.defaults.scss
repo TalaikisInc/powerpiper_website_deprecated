@@ -56,8 +56,13 @@ $link-color: $brand-link-color !default;
   a:link {
     color: lighten($dark-text, 10%);
   }
-
 }
+
+.img-circle {
+  border-radius: 50%;
+  margin: 0 auto;
+}
+
 /*
 // ---------------------------- 
 // TEXT

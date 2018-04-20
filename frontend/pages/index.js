@@ -145,7 +145,7 @@ class Index extends Component {
                     {t('common:team_title_1')}
                   </span>
                 </Label>
-                <Image size='small' src={`${imagesUrl}/Giedrecircle.png`} />
+                <img className="grommetux-image grommetux-image--small img-circle" src={`${imagesUrl}/giedre.jpg`} />
                 <Paragraph size='large' margin='small' align='center'>
                   <span className='dark'>
                     {t('common:team_1')}
@@ -181,7 +181,7 @@ class Index extends Component {
                     {t('common:team_title_3')}
                   </span>
                 </Label>
-                <Image size='small' src={`${imagesUrl}/Tadascircle.png`} />
+                <img className="grommetux-image grommetux-image--small img-circle" src={`${imagesUrl}/tadas.jpg`} />
                 <Paragraph size='large' margin='small' align='center'>
                   <span className='dark'>
                     {t('common:team_3')}
