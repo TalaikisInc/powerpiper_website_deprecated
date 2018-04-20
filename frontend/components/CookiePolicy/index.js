@@ -1,6 +1,7 @@
 import { Component } from 'react'
 import cookie from 'react-cookies'
 
+import Box from 'grommet/components/Box'
 import Section from 'grommet/components/Section'
 import Label from 'grommet/components/Label'
 import Button from 'grommet/components/Button'
@@ -42,6 +43,7 @@ class CookiePolicy extends Component {
   render () {
     if(!this.state.policy) {
     return (
+        <Box colorIndex='neutral-4'>
         <Animate enter={{ animation: 'slide-down', duration: 1000, delay: 600 }} keep={this.state.keep}>
             <Section pad='large' align='center' justify='center' colorIndex='neutral-4'>
             {/* this one is added to allow for second section to become visible */}
@@ -55,6 +57,7 @@ class CookiePolicy extends Component {
                 <Button critical={true} label='OK' onClick={this._onButtonClick} />
             </Section>
         </Animate>
+        </Box>
         )
     } else {
         return <span />

@@ -58,7 +58,7 @@
     "uuid": "^3.2.1"
   },
   "scripts": {
-    "dev": "npm run cleancache && node index.js",
+    "dev": "npm run cleancache && cross-env NODE_ENV=development node index.js",
     "build": "npm run cleancache && next build",
     "start": "npm run cleancache && next build && cross-env NODE_ENV=production node index.js",
     "installdev": "npm install --only=dev",

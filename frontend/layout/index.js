@@ -13,7 +13,9 @@ import Header from 'grommet/components/Header'
 import Columns from 'grommet/components/Columns'
 import BlogIcon from 'grommet/components/icons/base/Blog'
 import Anchor from 'grommet/components/Anchor'
+import Button from 'grommet/components/Button'
 import Responsive from 'grommet/utils/Responsive'
+import AppIcon from 'grommet/components/icons/base/Apps'
 
 import scss from '../assets/scss/theme.scss'
 import nprogress from '../assets/css/progress.css'
@@ -130,13 +132,16 @@ class Layout extends Component {
             <Box flex={true} direction='row' responsive={true} pad='none' size='auto'>
               <Columns maxCount={3} justify={alignC} size='small' responsive={true} masonry={masonry}>
                 <Box align={align} alignContent={alignC} responsive={true} direction={direction} basis ='xsmall' size='auto'>
-                  {
+                  {/*
                     this.props.menu && <UserMenu isAuthenticated={this.props.isAuthenticated} />
+                    */
                   }
+                  <Button href='https://app.powerpiper.com/' icon={<AppIcon />} label='DApp' />
                 </Box>
                 <Box align={align} alignContent={alignC} responsive={true} direction={direction} basis ='xsmall' size='auto'>
                   <Link href="/blog/">
-                    <Anchor href='/blog/' icon={<BlogIcon />} label='Blog' />
+                    { /*<Anchor href='/blog/' icon={<BlogIcon />} label='Blog' /> */ }
+                    <Anchor href='https://medium.com/power-piper' icon={<BlogIcon />} label='Blog' />
                   </Link>
                 </Box>
                 { /*this.props.langSelector && <Box align={align} alignContent={alignC} responsive={true} direction={direction} basis ='xsmall' size='auto' colorIndex='neutral-3'>

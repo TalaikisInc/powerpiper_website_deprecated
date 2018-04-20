@@ -34,7 +34,7 @@ class Index extends Component {
     return (
       <Layout {...this.props}>
         <Section full={true} pad='none' align='center' justify='center' texture={`url(${imagesUrl}/bcg4.svg)`} colorIndex='neutral-4'>
-          <Animate enter={{ animation: 'slide-up', duration: 1000, delay: 1000 }} keep={true}>
+          { /* <Animate enter={{ animation: 'slide-up', duration: 1000, delay: 1000 }} keep={true}> */ }
             <Box align='center' responsive={true} pad='large'>
               <Heading align='center'>
                 <span className='light'>
@@ -43,19 +43,20 @@ class Index extends Component {
               </Heading>
               <Subscribe />
             </Box>
-          </Animate>
+          { /*</Animate> */ }
         </Section>
         <Section full={true} pad='none' align='center' justify='center' colorIndex='neutral-2'>
           <Box align='center' responsive={true} pad='large'>
-            <Animate enter={{ animation: 'slide-up', duration: 1000, delay: 1000 }} keep={true} visible='scroll'>
+            { /*<Animate enter={{ animation: 'slide-up', duration: 1000, delay: 1000 }} keep={true} visible='scroll'> */ }
               {FontAwesome({name: 'plug', theme: 'dark', size: '4x'})}
               <Heading align='center'>
                 <span className='dark'>
                   {t('common:intro_title')}
                 </span>
               </Heading>
-            </Animate>
+            { /* </Animate>
             <Animate enter={{ animation: 'slide-down', duration: 1000, delay: 1000 }} keep={true} visible='scroll'>
+            */ }
               <Box align='center' responsive={true} direction='row'>
                 <Box pad='medium' size='large'>
                   <TxCosts />
@@ -73,8 +74,8 @@ class Index extends Component {
                   </Label>
                 </Box>
               </Box>
-            </Animate>
-            <Animate enter={{ animation: 'slide-up', duration: 1000, delay: 1000 }} keep={true} visible='scroll'>
+            { /* </Animate>
+            <Animate enter={{ animation: 'slide-up', duration: 1000, delay: 1000 }} keep={true} visible='scroll'> */ }
               <Box align='center' responsive={true} direction='row'>
                 <Box pad='medium' size='large' responsive={true}>
                   <Label>
@@ -87,11 +88,11 @@ class Index extends Component {
                 <PowerUsage />
                 </Box>
               </Box>
-            </Animate>
+            { /*</Animate> */ }
           </Box>
         </Section>
         <Section full={true} pad='medium' align='center' justify='center' texture={`url(${imagesUrl}/bcg4.svg)`} colorIndex='neutral-4'>
-          <Animate enter={{ animation: 'slide-up', duration: 1000, delay: 1000 }} keep={true} visible='scroll'>
+          { /*<Animate enter={{ animation: 'slide-up', duration: 1000, delay: 1000 }} keep={true} visible='scroll'>*/ }
             <Box align='center' responsive={true} pad='medium'>
               {FontAwesome({name: 'battery-full', theme: 'light', size: '4x'})}
               <Heading align='center'>
@@ -100,7 +101,7 @@ class Index extends Component {
                 </span>
               </Heading>
               <Box align='center' responsive={true} direction='row'>
-                <Box align='center' pad='medium' size='large'>
+                <Box align='center' pad='medium' size='large' responsive={true}>
                   <Image size='large' src={`${imagesUrl}/about.png`} />
                 </Box>
                 <Box align='center' pad='medium' size='large'>
@@ -124,10 +125,10 @@ class Index extends Component {
                 </Label>
               </Box>
             </Box>
-          </Animate>
+          { /*</Animate> */ }
         </Section>
         <Section full={true} pad='none' align='center' justify='center' colorIndex='neutral-2'>
-          <Animate enter={{ animation: 'slide-up', duration: 1000, delay: 1000 }} keep={true} visible='scroll'>
+          { /* <Animate enter={{ animation: 'slide-up', duration: 1000, delay: 1000 }} keep={true} visible='scroll'> */ }
             <Box align='center' responsive={true} pad='medium'>
               {FontAwesome({name: 'users', theme: 'dark', size: '4x'})}
               <Heading align='center'>
@@ -136,8 +137,8 @@ class Index extends Component {
                 </span>
               </Heading>
             </Box>
-          </Animate>
-          <Animate enter={{ animation: 'slide-up', duration: 1000, delay: 1000 }} keep={true} visible='scroll'>
+          { /*</Animate>
+          <Animate enter={{ animation: 'slide-up', duration: 1000, delay: 1000 }} keep={true} visible='scroll'> */ }
             <Box align='center' responsive={true} direction='row'>
               <Box pad='medium' align='center' justify='start'>
                 <Label uppercase={true} align='center'>
@@ -195,10 +196,14 @@ class Index extends Component {
                   <a href='https://talaikis.com'>
                     {FontAwesome({name: 'external-link', theme:'dark', size: '1x'})}
                   </a>
+                  &nbsp;
+                  <a href='https://medium.com/@dxenu'>
+                    {FontAwesome({name: 'medium', theme:'dark', size: '1x'})}
+                  </a>
                 </Paragraph>
               </Box>
             </Box>
-          </Animate>
+          { /* </Animate> */ }
         </Section>
       </Layout>
     )
