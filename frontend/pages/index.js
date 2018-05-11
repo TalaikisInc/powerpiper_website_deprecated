@@ -57,7 +57,7 @@ class Index extends Component {
 }
 
 Index.defaultProps = {
-  title: 'Decentralized Energy Marketplace',
+  title: 'PowerPiper',
   description: 'Decentralized Energy Marketplace',
   image: '',
   menu: true
