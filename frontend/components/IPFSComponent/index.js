@@ -20,9 +20,9 @@ export default class IPFSComponent extends Component {
     super(props, ...args)
 
     this.state = {
-      hash: null,
+      hash: '',
       loading: false,
-      data: null
+      data: ''
     }
 
     this._onSubmit = this._onSubmit.bind(this)
@@ -64,7 +64,7 @@ export default class IPFSComponent extends Component {
       <Box align='center' responsive={true} pad='large' colorIndex='neutral-4'>
         <Box align='center'>
           <Heading align='center'>
-          View our one-pager:
+          View our OnePager:
           </Heading>
         </Box>
         <Form onSubmit={this._onSubmit}>
@@ -74,7 +74,7 @@ export default class IPFSComponent extends Component {
               name='hash'
               onDOMChange={this._onChange}
               value={this.state.hash}
-              placeHolder='(enter hash key)' />
+              placeHolder='(enter secret hash key)' />
           </Box>
           <Box align='center' pad='large'>
           {
